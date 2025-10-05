@@ -9,20 +9,27 @@ export default function DocumentsSection() {
     if (e.target.files) setFile(e.target.files[0]);
   };
 
-  const handleUpload = async () => {
-    if (!file) return;
+const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
 
-    const formData = new FormData();
-    formData.append("file", file);
+const handleUpload = async () => {
+  if (!file) return;
+
+      const formData = new FormData();
+  formData.append("file", file);
 
     const res = await fetch("/api/documents", {
-      method: "POST",
-      body: formData,
-    });
+    method: "POST",
+    body: formData,
+  });
 
-    const data = await res.json();
-    setMessage(data.message);
-  };
+  const data = await res.json();
+  setMessage(data.message);
+
+
+  setUploadedFiles((prev) => [...prev, file.name]);
+};
+
+
 
   return (
     <div>

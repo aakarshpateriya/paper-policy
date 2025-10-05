@@ -1,4 +1,3 @@
-
 "use client";
 import { useEffect, useState } from "react";
 
@@ -7,6 +6,7 @@ interface Request {
   type: string;
   status: string;
   user: string;
+  documents: string[];
 }
 
 export default function RequestsSection() {
@@ -28,6 +28,7 @@ export default function RequestsSection() {
             <th className="p-2 border">User</th>
             <th className="p-2 border">Type</th>
             <th className="p-2 border">Status</th>
+            <th className="p-2 border">Documents</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +38,13 @@ export default function RequestsSection() {
               <td className="p-2 border">{req.user}</td>
               <td className="p-2 border">{req.type}</td>
               <td className="p-2 border">{req.status}</td>
+              <td className="p-2 border">
+                {req.documents.map((doc, index) => (
+                  <span key={index} className="mr-2">
+                    {doc}
+                  </span>
+                ))}
+              </td>
             </tr>
           ))}
         </tbody>

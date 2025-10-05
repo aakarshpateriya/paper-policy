@@ -1,14 +1,16 @@
 import DashboardLayout from "../components/DashboardLayout";
-import RequestsSection from "../components/RequestsSection";
 import DocumentsSection from "../components/DocumentsSection";
+import SubmitRequest from "../components/SubmitRequest";
+import RequestsSection from "../components/RequestsSection";
+import BuyingSection from "../components/BuyingSection";
 
 export default function Home() {
   return (
     <DashboardLayout>
+      <DocumentsSection />
+      <SubmitRequest uploadedFiles={[]} />
+      <BuyingSection />
       <RequestsSection />
-      <div className="mt-8">
-        <DocumentsSection />
-      </div>
     </DashboardLayout>
   );
 }
